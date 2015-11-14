@@ -14,6 +14,7 @@ public class Student
     private String id;
     // the amount of credits for study taken so far
     private int credits;
+    private String advisoryGroup;
 
     /**
      * Create a new student with a given name and ID number.
@@ -48,7 +49,16 @@ public class Student
     {
         return id;
     }
-
+    
+    public void setAdvisory (String advisory)
+    {
+        advisoryGroup = advisory;
+    }
+    public String getAdvisory()
+    {
+        return advisoryGroup;
+    }
+   
     /**
      * Add some credit points to the student's accumulated credits.
      */

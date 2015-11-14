@@ -26,10 +26,10 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(25);
         minutes = new NumberDisplay(60);
         seconds = new NumberDisplay(60);
-        am = "am";
+        am = "a.m.";
         updateDisplay();
     }
 
@@ -40,7 +40,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute, int second, String pm)
     {
-        hours = new NumberDisplay(24);
+        hours = new NumberDisplay(25);
         minutes = new NumberDisplay(60);
         seconds = new NumberDisplay(60);
         am = "am";
@@ -57,6 +57,17 @@ public class ClockDisplay
         minutes.increment();
         if(minutes.getValue() == 0) {  // it just rolled over!
             hours.increment();
+        }
+        
+        if (hours.getValue() == 12 && minutes.getValue() == 0 && seconds.getValue() == 0 
+            && am == "a.m.")
+        {
+            am = "p.m.";
+        }
+        else if (hours.getValue() == 12 && minutes.getValue() == 0 && seconds.getValue() == 0 
+            && am == "p.m.")
+        {
+            am ="a.m.";
         }
         updateDisplay();
     }
@@ -87,67 +98,35 @@ public class ClockDisplay
      */
     private void updateDisplay()
     {
-        int hour = Integer.parseInt(hours.getDisplayValue()); 
-        int second = Integer.parseInt(seconds.getDisplayValue());
-        int minute = Integer.parseInt(minutes.getDisplayValue());
-        
-        if (hour < 12 &&
-        
-        
-      /*  if (hour > 12 && am == "a.m.")
+        int hour = Integer.parseInt(hours.getDisplayValue());
+        displayString = hours.getDisplayValue() + ":" + minutes.getDisplayValue() + ":" + 
+                        seconds.getDisplayValue() + " " + am;
+        if (hour == 0)
         {
-            displayString = (hour-12) + ":" + minutes.getDisplayValue() + ":" +
-                            seconds.getDisplayValue() + " " + "p.m.";
+            displayString = "12"+":"+ minutes.getDisplayValue() + ":" + 
+            seconds.getDisplayValue() + " " + "a.m.";
         }
         
-        
-        else 
+        if (hour > 12)
         {
-            displayString = hour + ":" + minutes.getDisplayValue() + ":" + 
-                            seconds.getDisplayValue()+ " " + am;
-        }
-       
             
-        /*   if (hour > 12 && am == "a.m.")
-        {
-            displayString = (hour-12) + ":" + 
-                            minutes.getDisplayValue() + ":" 
-                            + seconds.getDisplayValue()+"a.m.";
+         
+            
+                displayString = "0"+(hour-12)+":"+ minutes.getDisplayValue() + ":" + 
+                seconds.getDisplayValue() + " " + am;
         }
-        else if (hour == 12 && am == "p.m.")
-        {   
-           
-            displayString = hour + ":" + minutes.getDisplayValue() + ":" 
-            + seconds.getDisplayValue() + "a.m.";
+        
+            
         }
-        else if (hour == 12 && am =="a.m.")
-        {
-            displayString = hour + ":" + minutes.getDisplayValue() + ":" + 
-            seconds.getDisplayValue() + "p.m.";
-        }
+        
+
+        
+        
+        
+     
+        
     }
-        /*else 
-        {
-        }  displayString = hour + ":" + minutes.getDisplayValue() + ":" + 
-            seconds.getDisplayValue() + am;
-        }
-        
-            /*if (hour == 12)
-        {
-            displayString = hour + ":" + minutes.getDisplayValue() + ":" +
-                            seconds.getDisplayValue()+"pm";
-            
-        }  
-        else if (hour == 0)
-        {
-            displayString = 12 + ":" + minutes.getDisplayValue() + ":" +
-                            seconds.getDisplayValue()+"am";
-            
-        }
-        else if (hour < 12)
-        {
-            displayString = hour +  ":" + minutes.getDisplayValue() + ":" 
-                            + seconds.getDisplayValue()+"am";
-        } */
-}
-}
+
+
+
+

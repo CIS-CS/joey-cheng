@@ -39,7 +39,7 @@ public class ClockDisplayTest
     public void tearDown()
     {
     }
-
+ 
     @Test
     public void testDefaultClock()
     {

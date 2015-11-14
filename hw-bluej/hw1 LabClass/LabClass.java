@@ -12,6 +12,8 @@ public class LabClass
     private String instructor;
     private String room;
     private String timeAndDay;
+    private String advisoryGroup;
+
     private ArrayList<Student> students;
     private int capacity;
     
@@ -24,6 +26,7 @@ public class LabClass
         instructor = "unknown";
         room = "unknown";
         timeAndDay = "unknown";
+      
         students = new ArrayList<Student>();
         capacity = maxNumberOfStudents;
     }
@@ -57,6 +60,16 @@ public class LabClass
         room = roomNumber;
     }
     
+    public void setAdvisory (String advisory)
+    {
+        advisoryGroup = advisory;
+    }
+    
+    public String getAdvisory()
+    {
+        return advisoryGroup;
+    }
+    
     /**
      * Set the time for this LabClass. The parameter should define the day
      * and the time of day, such as "Friday, 10am".
@@ -65,6 +78,7 @@ public class LabClass
     {
         timeAndDay = timeAndDayString;
     }
+    
     
     /**
      * Set the name of the instructor for this LabClass.

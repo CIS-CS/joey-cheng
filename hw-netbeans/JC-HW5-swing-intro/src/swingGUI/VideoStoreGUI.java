@@ -228,7 +228,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lengthFieldActionPerformed
 
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
-        // TODO add your handling code here:
+        videoNumberLabel.setText((videoNumber+1) + " of" + (videoNumber));// TODO add your handling code here:
     }//GEN-LAST:event_rightButtonActionPerformed
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed

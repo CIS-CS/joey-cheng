@@ -14,6 +14,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     /**
      * Creates new form VideoStoreGUI
      */private int videoNumber = 1;
+     private int totalNumber = 10;
        
     public VideoStoreGUI() {
         initComponents();
@@ -228,7 +229,12 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lengthFieldActionPerformed
 
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
-        videoNumberLabel.setText((videoNumber+1) + " of" + (videoNumber));// TODO add your handling code here:
+        if (videoNumber <= totalNumber)
+        {
+            videoNumber++;
+            videoNumberLabel.setText(videoNumber + " " + totalNumber);
+        }
+        
     }//GEN-LAST:event_rightButtonActionPerformed
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
@@ -241,7 +247,8 @@ public class VideoStoreGUI extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         videoNumber++;
-        videoNumberLabel.setText(videoNumber  + "of" + (videoNumber));        // TODO add your handling code here:
+        totalNumber++;
+        videoNumberLabel.setText(videoNumber  + "of" + (totalNumber));        // TODO add your handling code here:
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
@@ -249,8 +256,12 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_applyButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        videoNumber--;
-        videoNumberLabel.setText((videoNumber) + "of" + videoNumber);
+        if (videoNumber > 0)
+        {
+            videoNumber--;
+            totalNumber--;
+            videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 

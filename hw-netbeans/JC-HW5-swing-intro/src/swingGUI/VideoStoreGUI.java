@@ -13,7 +13,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form VideoStoreGUI
-     */private int videoNumber = 1;
+     */private int videoNumber = 0;
      private int totalNumber = 10;
        
     public VideoStoreGUI() {
@@ -35,10 +35,10 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         titleField = new javax.swing.JTextField();
         lengthField = new javax.swing.JTextField();
         isOnLoan = new javax.swing.JCheckBox();
-        homeButton = new javax.swing.JButton();
+        furthestLeft = new javax.swing.JButton();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
-        endButton = new javax.swing.JButton();
+        furthestRight = new javax.swing.JButton();
         videoNumberLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
@@ -71,14 +71,19 @@ public class VideoStoreGUI extends javax.swing.JFrame {
 
         isOnLoan.setText("On Loan");
 
-        homeButton.setText("|<");
-        homeButton.addActionListener(new java.awt.event.ActionListener() {
+        furthestLeft.setText("|<");
+        furthestLeft.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                furthestLeftActionPerformed(evt);
             }
         });
 
         leftButton.setText("Left");
+        leftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftButtonActionPerformed(evt);
+            }
+        });
 
         rightButton.setText("Right");
         rightButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,10 +92,10 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             }
         });
 
-        endButton.setText("End");
-        endButton.addActionListener(new java.awt.event.ActionListener() {
+        furthestRight.setText(">|");
+        furthestRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                endButtonActionPerformed(evt);
+                furthestRightActionPerformed(evt);
             }
         });
 
@@ -101,31 +106,28 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, detailsPanelLayout.createSequentialGroup()
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
                         .addComponent(lengthLable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lengthField, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, detailsPanelLayout.createSequentialGroup()
+                        .addComponent(lengthField))
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(titleLable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(titleField)))
                 .addGap(18, 18, 18)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(isOnLoan)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(leftButton)
-                                .addComponent(homeButton)
-                                .addComponent(rightButton))
-                            .addComponent(endButton))
-                        .addGap(20, 20, 20))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(isOnLoan)
+                .addGap(29, 29, 29))
+            .addGroup(detailsPanelLayout.createSequentialGroup()
+                .addComponent(furthestLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(furthestRight)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(videoNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -137,21 +139,17 @@ public class VideoStoreGUI extends javax.swing.JFrame {
                     .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isOnLoan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lengthLable)
-                        .addComponent(lengthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(leftButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rightButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(endButton)))
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lengthLable)
+                    .addComponent(lengthField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(videoNumberLabel)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(furthestLeft)
+                    .addComponent(leftButton)
+                    .addComponent(rightButton)
+                    .addComponent(furthestRight)
+                    .addComponent(videoNumberLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         addButton.setText("Add");
@@ -214,7 +212,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
                 .addComponent(applyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 125, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,26 +227,39 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lengthFieldActionPerformed
 
     private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
-        if (videoNumber <= totalNumber)
+        if (videoNumber < totalNumber)
         {
             videoNumber++;
-            videoNumberLabel.setText(videoNumber + " " + totalNumber);
+            videoNumberLabel.setText( videoNumber + " " + "of" + " " + totalNumber );
         }
         
     }//GEN-LAST:event_rightButtonActionPerformed
 
-    private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
-        videoNumberLabel.setText("10 of 10");        // TODO add your handling code here:
-    }//GEN-LAST:event_endButtonActionPerformed
+    private void furthestRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestRightActionPerformed
+        videoNumberLabel.setText(totalNumber + " " + "of" + " " + totalNumber);
+        videoNumber = totalNumber;        // TODO add your handling code here:
+    }//GEN-LAST:event_furthestRightActionPerformed
 
-    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        videoNumberLabel.setText("1 of 10");// TODO add your handling code here:
-    }//GEN-LAST:event_homeButtonActionPerformed
+    private void furthestLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestLeftActionPerformed
+        videoNumber = 1;
+        videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);// TODO add your handling code here:
+    }//GEN-LAST:event_furthestLeftActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        videoNumber++;
-        totalNumber++;
-        videoNumberLabel.setText(videoNumber  + "of" + (totalNumber));        // TODO add your handling code here:
+        
+        if (videoNumber < totalNumber )
+        {
+            videoNumber++;
+            videoNumberLabel.setText(videoNumber  + " " + "of" + " " + totalNumber);  
+        }// TODO a
+        
+        else 
+        {
+            videoNumber++;
+            totalNumber++;
+            videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);
+            
+        }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
@@ -264,6 +275,10 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         }
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_leftButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,10 +321,10 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel detailsPanel;
-    private javax.swing.JButton endButton;
     private javax.swing.JMenu fileHelp;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton homeButton;
+    private javax.swing.JButton furthestLeft;
+    private javax.swing.JButton furthestRight;
     private javax.swing.JCheckBox isOnLoan;
     private javax.swing.JButton leftButton;
     private javax.swing.JTextField lengthField;

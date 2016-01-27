@@ -1,10 +1,11 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package swingGUI;
 
+import java.util.ArrayList;
 /**
  *
  * @author joeycheng
@@ -15,6 +16,9 @@ public class VideoStoreGUI extends javax.swing.JFrame {
      * Creates new form VideoStoreGUI
      */private int videoNumber = 0;
      private int totalNumber = 10;
+     private ArrayList <VideoTape> VideoTapes;
+     
+
        
     public VideoStoreGUI() {
         initComponents();
@@ -70,6 +74,11 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         });
 
         isOnLoan.setText("On Loan");
+        isOnLoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isOnLoanActionPerformed(evt);
+            }
+        });
 
         furthestLeft.setText("|<");
         furthestLeft.addActionListener(new java.awt.event.ActionListener() {
@@ -218,8 +227,11 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     
+    
+    
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        // TODO add your handling code here:
+       // TODO add your.handling code here:
     }//GEN-LAST:event_titleFieldActionPerformed
 
     private void lengthFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthFieldActionPerformed
@@ -260,9 +272,14 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);
             
         }
+        
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
+
+    VideoTape t = new VideoTape((titleField.getText()),Integer.parseInt(lengthField.getText()),isOnLoan.isSelected());   
+    VideoTapes.add(t);
 // TODO add your handling code here:
     }//GEN-LAST:event_applyButtonActionPerformed
 
@@ -273,12 +290,22 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             totalNumber--;
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }
+        
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
-        // TODO add your handling code here:
+        if (videoNumber > 1)
+        {
+            videoNumber--;
+            videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_leftButtonActionPerformed
+
+    private void isOnLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isOnLoanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_isOnLoanActionPerformed
 
     /**
      * @param args the command line arguments

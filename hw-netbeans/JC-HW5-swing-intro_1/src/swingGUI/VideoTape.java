@@ -1,5 +1,4 @@
 package swingGUI;
-
 /*
  * VideoTape.java
  *

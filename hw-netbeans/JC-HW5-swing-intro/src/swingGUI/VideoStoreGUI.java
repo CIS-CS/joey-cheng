@@ -11,17 +11,19 @@ import java.util.ArrayList;
  * @author joeycheng
  */
 public class VideoStoreGUI extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form VideoStoreGUI
-     */private int videoNumber = 0;
-     private int totalNumber = 10;
-     private ArrayList <VideoTape> VideoTapes;
+     */
+     private int videoNumber = 0;
+     private int totalNumber = 0;
+     private ArrayList <VideoTape> videoTapes;
      
 
        
     public VideoStoreGUI() {
         initComponents();
+        videoTapes = new ArrayList<VideoTape>(); 
     }
 
     /**
@@ -108,7 +110,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             }
         });
 
-        videoNumberLabel.setText("1 of 10");
+        videoNumberLabel.setText("0 of 0");
 
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
@@ -243,18 +245,35 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         {
             videoNumber++;
             videoNumberLabel.setText( videoNumber + " " + "of" + " " + totalNumber );
+            int videoIndex = videoNumber -1;
+            titleField.setText(videoTapes.get(videoIndex).getTitle());
+            lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+            isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
         }
+        
+        
         
     }//GEN-LAST:event_rightButtonActionPerformed
 
     private void furthestRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestRightActionPerformed
         videoNumberLabel.setText(totalNumber + " " + "of" + " " + totalNumber);
-        videoNumber = totalNumber;        // TODO add your handling code here:
+        videoNumber = totalNumber;
+        int videoIndex = videoNumber - 1;
+        titleField.setText(videoTapes.get(videoIndex).getTitle());
+        lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+        isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
+        
+        // TODO add your handling code here:
     }//GEN-LAST:event_furthestRightActionPerformed
 
     private void furthestLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestLeftActionPerformed
         videoNumber = 1;
-        videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);// TODO add your handling code here:
+        videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);
+        int videoIndex = videoNumber - 1;
+        titleField.setText(videoTapes.get(videoIndex).getTitle());
+        lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+        isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
+        // TODO add your handling code here:
     }//GEN-LAST:event_furthestLeftActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -273,13 +292,15 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             
         }
         
+         VideoTape t = new VideoTape((titleField.getText()),Integer.parseInt(lengthField.getText()),isOnLoan.isSelected());   
+         videoTapes.add(t);
+        
         
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void applyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyButtonActionPerformed
 
-    VideoTape t = new VideoTape((titleField.getText()),Integer.parseInt(lengthField.getText()),isOnLoan.isSelected());   
-    VideoTapes.add(t);
+   
 // TODO add your handling code here:
     }//GEN-LAST:event_applyButtonActionPerformed
 
@@ -291,6 +312,11 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }
         
+        int videoIndex = videoNumber - 1;
+        titleField.setText(videoTapes.get(videoIndex).getTitle());
+        lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+        isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
+        
         
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -301,6 +327,12 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumber--;
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }// TODO add your handling code here:
+        
+        int videoIndex = videoNumber - 1;
+        titleField.setText(videoTapes.get(videoIndex).getTitle());
+        lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+        isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
+        
     }//GEN-LAST:event_leftButtonActionPerformed
 
     private void isOnLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isOnLoanActionPerformed

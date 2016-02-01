@@ -17,13 +17,13 @@ public class VideoStoreGUI extends javax.swing.JFrame {
      */
      private int videoNumber = 0;
      private int totalNumber = 0;
-     private ArrayList <VideoTape> videoTapes;
+     private DoubleList videoTapes = new DoubleList();
      
 
        
     public VideoStoreGUI() {
         initComponents();
-        videoTapes = new ArrayList<VideoTape>(); 
+        
     }
 
     /**
@@ -278,7 +278,8 @@ public class VideoStoreGUI extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         
-        if (videoNumber < totalNumber )
+    
+       if (videoNumber < totalNumber )
         {
             videoNumber++;
             videoNumberLabel.setText(videoNumber  + " " + "of" + " " + totalNumber);  
@@ -292,8 +293,14 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             
         }
         
-         VideoTape t = new VideoTape((titleField.getText()),Integer.parseInt(lengthField.getText()),isOnLoan.isSelected());   
-         videoTapes.add(t);
+       
+         VideoTape tapes = new VideoTape((titleField.getText()),Integer.parseInt(lengthField.getText()),isOnLoan.isSelected()); 
+         DoubleNode node = new DoubleNode(VideoTape tapes);
+         
+       if (totalNumber == 0)
+       {
+           
+       }
         
         
     }//GEN-LAST:event_addButtonActionPerformed

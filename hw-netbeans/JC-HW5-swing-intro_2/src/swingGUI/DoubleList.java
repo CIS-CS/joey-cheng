@@ -20,10 +20,8 @@ public class DoubleList {
      *  Inserts a node at the head of the list.
      *  @param node The node to insert.
      */
-    public void insertHead(VideoTape tapes)
+    public void insertHead(DoubleNode node)
     {
-        DoubleNode node;
-        node = new DoubleNode (tapes);
         // Check if the list is empty
         if (head == null)
         {
@@ -46,10 +44,8 @@ public class DoubleList {
      *  Inserts a node at the tail of the list.
      *  @param node The node to insert.
      */
-    public void insertTail(VideoTape tapes)
+    public void insertTail(DoubleNode node)
     {
-        DoubleNode node;
-        node = new DoubleNode (tapes);
         // Check if the list is empty
         if (head == null)
         {
@@ -92,7 +88,6 @@ public class DoubleList {
         current.getNext().setPrev(node);
         current.setNext(node);
         current = node;
-        
     }
 
     /**

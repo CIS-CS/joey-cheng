@@ -299,8 +299,20 @@ public class VideoStoreGUI extends javax.swing.JFrame {
          
        if (totalNumber == 0)
        {
-           
+           videoTapes.insertHead(node);
        }
+       
+      else if (videoNumber == totalNumber)
+       {
+           videoTapes.insertTail(node);
+       }
+       
+      else  
+      {
+          videoTapes.insertBefore(node);
+      }
+       
+       
         
         
     }//GEN-LAST:event_addButtonActionPerformed

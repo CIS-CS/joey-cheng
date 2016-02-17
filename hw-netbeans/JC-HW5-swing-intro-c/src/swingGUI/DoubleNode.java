@@ -34,16 +34,25 @@ class DoubleNode
         tapeLength = tapes.getLength();
         lent = tapes.isLent();
     }
-      
+    
+    public int getLength()
+    {
+        return tapeLength;
+    }
+    
+    public boolean getLent()
+    {
+        return lent;
+    }
    
         
     // accessor methods
-    public String     getName(){ return name;}
+    public String     getName(){ return tapeName;}
     public DoubleNode getNext(){ return next;}
     public DoubleNode getPrev(){ return prev;}
     
     // modifier methods
-    public void setName( String name )   {this.name = name;}
+    public void setName( String name )   {this.tapeName = tapeName;}
     public void setNext( DoubleNode name){this.next = name;}
     public void setPrev( DoubleNode prev){this.prev = prev;}
 }

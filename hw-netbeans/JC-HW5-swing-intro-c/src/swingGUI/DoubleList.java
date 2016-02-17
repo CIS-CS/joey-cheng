@@ -14,7 +14,9 @@ public class DoubleList {
     // Instance variables
     private DoubleNode head = null;
     private DoubleNode tail = null;
-    private DoubleNode current = null;  // points to last inserted node
+    private DoubleNode current = null; // points to last inserted node
+    private int size = 0;
+   
 
     /**
      *  Inserts a node at the head of the list.
@@ -29,6 +31,7 @@ public class DoubleList {
             head = node;
             tail = node;
             current = head;
+            
         }
         else
         {
@@ -38,6 +41,7 @@ public class DoubleList {
             head = node;
             current = head;
         }
+        size++;
     }
 
     /**
@@ -62,6 +66,7 @@ public class DoubleList {
             tail = node;
             current = tail;
         }
+        size++;
     }
 
     /**
@@ -75,6 +80,7 @@ public class DoubleList {
         current.getPrev().setNext(node);
         current.setPrev(node);
         current = node;
+        size++;
     }
 
     /**
@@ -88,8 +94,37 @@ public class DoubleList {
         current.getNext().setPrev(node);
         current.setNext(node);
         current = node;
+        size++;
     }
-
+    
+    public DoubleNode getHead(DoubleNode node)
+    {
+        while (node.getPrev() != null)
+        {
+            current = node;
+        }
+        
+        return current;
+    }
+    
+    public int getSize()
+    {
+        return size;
+    }
+    
+    public DoubleNode getTail(DoubleNode node)
+    {
+        while(node.getNext() != null)
+        {
+            current = node;
+        }
+        return current;
+    }
+    
+    /*private DoubleNode getPrevious(DoubleList list)
+    {
+        while (list)
+    }*/
     /**
      *  Extracts the names from the nodes and forms a string.
      *  @return String The names in the list, separated by "\n"

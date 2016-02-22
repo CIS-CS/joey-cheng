@@ -45,6 +45,7 @@ class DoubleNode
         return lent;
     }
    
+ 
         
     // accessor methods
     public String     getName(){ return tapeName;}

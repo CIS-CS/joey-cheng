@@ -68,6 +68,8 @@ public class DoubleList {
         }
         size++;
     }
+    
+  
 
     /**
      *  Inserts a node before the current node.

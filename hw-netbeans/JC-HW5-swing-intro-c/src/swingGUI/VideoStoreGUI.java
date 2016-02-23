@@ -5,7 +5,8 @@
  */
 package swingGUI;
 
-import java.util.ArrayList;
+import java.util.*;
+
 /**
  *
  * @author joeycheng
@@ -19,6 +20,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
      private int totalNumber = 0;
      private DoubleList videoTapes = new DoubleList();
      private DoubleNode node = new DoubleNode();
+ 
    
     public VideoStoreGUI() {
         initComponents();
@@ -242,7 +244,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumber++;
             videoNumberLabel.setText( videoNumber + " " + "of" + " " + totalNumber );
             
-            node.getNext();
+            node = videoTapes.getListNext();
             titleField.setText(node.getName());
             lengthField.setText(" " + node.getLength());
             isOnLoan.setSelected(node.getLent());
@@ -293,9 +295,11 @@ public class VideoStoreGUI extends javax.swing.JFrame {
            videoTapes.insertHead(node);
        }
        
+       
       else if (videoNumber == totalNumber)
        {
            videoTapes.insertTail(node);
+           
        }
        
       else  
@@ -328,13 +332,14 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         
         else if (videoNumber == totalNumber)
         {
-            node = node.getPrev();
+            node = videoTapes.getListPrev();
             node.setNext(null);
         }
+       
         
         else
         {
-            node = node.getPrev();
+            node = videoTapes.getListPrev();
             node.setNext(node.getNext().getNext());
         }
             
@@ -352,7 +357,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }// TODO add your handling code here:
         
-        node.getPrev();
+        node = videoTapes.getListPrev();
         titleField.setText(node.getName());
         lengthField.setText("" + node.getLength());
         isOnLoan.setSelected(node.getLent());

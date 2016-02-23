@@ -50,6 +50,7 @@ public class DoubleList {
      */
     public void insertTail(DoubleNode node)
     {
+        
         // Check if the list is empty
         if (head == null)
         {
@@ -77,13 +78,26 @@ public class DoubleList {
      */
     public void insertBefore(DoubleNode node)
     {
+       
         node.setNext(current);
         node.setPrev(current.getPrev());
         current.getPrev().setNext(node);
         current.setPrev(node);
         current = node;
         size++;
+       
     }
+    
+    public DoubleNode getListNext()
+    {
+        return current.getNext();
+    }
+    
+    public DoubleNode getListPrev()
+    {
+        return current.getPrev();
+    }
+    
 
     /**
      *  Inserts a node after the current node.
@@ -91,6 +105,7 @@ public class DoubleList {
      */
     public void insertAfter(DoubleNode node)
     {
+        
         node.setPrev(current);
         node.setNext(current.getNext());
         current.getNext().setPrev(node);

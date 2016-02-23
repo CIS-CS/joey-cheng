@@ -343,10 +343,6 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             node.setNext(node.getNext().getNext());
         }
             
-           
-        
-        
-        
 // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 

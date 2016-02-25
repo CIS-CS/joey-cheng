@@ -16,3 +16,7 @@
 /hw-netbeans/RoadBike/nbproject/private/
 /hw-netbeans/JC-HW5-swing-intro-a/dist/
 /hw-netbeans/JC-HW5-swing-intro-c/dist/
+
+*.properties
+*.class
+*.xml

@@ -243,12 +243,13 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         {
             videoNumber++;
             videoNumberLabel.setText( videoNumber + " " + "of" + " " + totalNumber );
-            
+        }
+        
             node = videoTapes.getListNext();
             titleField.setText(node.getName());
             lengthField.setText(" " + node.getLength());
             isOnLoan.setSelected(node.getLent());
-        }
+        
         
     }//GEN-LAST:event_rightButtonActionPerformed
 

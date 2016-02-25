@@ -124,15 +124,12 @@ public class DoubleList {
         size++;
     }
     
-    public DoubleNode getHead(DoubleNode node)
+    public DoubleNode getHead()
     {
         
-        while (node.getPrev() != null)
-        {
-            current = node;
-        }
+        current = head;
         
-        return current;
+        return head;
     }
     
     public int getSize()
@@ -140,14 +137,12 @@ public class DoubleList {
         return size;
     }
     
-    public DoubleNode getTail(DoubleNode node)
+    public DoubleNode getTail()
     {
-        while(node.getNext() != null)
-        {
-            current = node;
-        }
-        return current;
+        current = tail;
+        return tail;
     }
+    
     
     /*private DoubleNode getPrevious(DoubleList list)
     {

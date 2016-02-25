@@ -254,8 +254,8 @@ public class VideoStoreGUI extends javax.swing.JFrame {
     private void furthestRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestRightActionPerformed
         videoNumberLabel.setText(totalNumber + " " + "of" + " " + totalNumber);
         videoNumber = totalNumber;
-        titleField.setText(videoTapes.getTail(videoTapes.getCurrent()).getName());
-        lengthField.setText(" " + videoTapes.getCurrent().getLength());
+        titleField.setText(videoTapes.getTail().getName());
+        lengthField.setText("" + videoTapes.getCurrent().getLength());
         isOnLoan.setSelected(videoTapes.getCurrent().getLent());
         
     }//GEN-LAST:event_furthestRightActionPerformed
@@ -264,8 +264,9 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         videoNumber = 1;
         videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);
        
-        titleField.setText(videoTapes.getHead(videoTapes.getCurrent()).getName());
-        lengthField.setText(" " + videoTapes.getCurrent().getLength());
+        
+        titleField.setText(videoTapes.getHead().getName());
+        lengthField.setText("" + videoTapes.getCurrent().getLength());
         isOnLoan.setSelected(videoTapes.getCurrent().getLent());
     }//GEN-LAST:event_furthestLeftActionPerformed
 

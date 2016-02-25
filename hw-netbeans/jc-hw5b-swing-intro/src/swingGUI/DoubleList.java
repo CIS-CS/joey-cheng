@@ -124,9 +124,9 @@ public class DoubleList {
         size++;
     }
     
-    public DoubleNode getHead(VideoTape tapes)
+    public DoubleNode getHead(DoubleNode node)
     {
-        DoubleNode node = new DoubleNode (tapes);
+        
         while (node.getPrev() != null)
         {
             current = node;
@@ -140,9 +140,8 @@ public class DoubleList {
         return size;
     }
     
-    public DoubleNode getTail(VideoTape tapes)
+    public DoubleNode getTail(DoubleNode node)
     {
-        DoubleNode node = new DoubleNode (tapes);
         while(node.getNext() != null)
         {
             current = node;

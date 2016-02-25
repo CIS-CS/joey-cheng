@@ -19,7 +19,6 @@ public class VideoStoreGUI extends javax.swing.JFrame {
      private int videoNumber = 0;
      private int totalNumber = 0;
      private DoubleList videoTapes = new DoubleList();
-     private DoubleNode node = new DoubleNode();
  
    
     public VideoStoreGUI() {
@@ -244,22 +243,21 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumber++;
             videoNumberLabel.setText( videoNumber + " " + "of" + " " + totalNumber );
         }
+          
         
-            node = videoTapes.getListNext();
-            titleField.setText(node.getName());
-            lengthField.setText(" " + node.getLength());
-            isOnLoan.setSelected(node.getLent());
-        
+        titleField.setText(videoTapes.getListNext().getName());
+        lengthField.setText("" + videoTapes.getCurrent().getLength());
+        isOnLoan.setSelected(videoTapes.getCurrent().getLent());
         
     }//GEN-LAST:event_rightButtonActionPerformed
-
+/*
     private void furthestRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_furthestRightActionPerformed
         videoNumberLabel.setText(totalNumber + " " + "of" + " " + totalNumber);
         videoNumber = totalNumber;
-        videoTapes.getTail(node);
-        titleField.setText(node.getName());
-        lengthField.setText(" " + node.getLength());
-        isOnLoan.setSelected(node.getLent());
+        videoTapes.getTail();
+        titleField.setText(current.getName());
+        lengthField.setText(" " + current.getLength());
+        isOnLoan.setSelected(current.getLent());
         
     }//GEN-LAST:event_furthestRightActionPerformed
 
@@ -271,7 +269,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         lengthField.setText(" " + node.getLength());
         isOnLoan.setSelected(node.getLent());
     }//GEN-LAST:event_furthestLeftActionPerformed
-
+*/
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
     
        if (videoNumber < totalNumber )
@@ -293,19 +291,19 @@ public class VideoStoreGUI extends javax.swing.JFrame {
          
        if (totalNumber == 0)
        {
-           videoTapes.insertHead(node);
+           videoTapes.insertHead(tapes);
        }
        
        
       else if (videoNumber == totalNumber)
        {
-           videoTapes.insertTail(node);
+           videoTapes.insertTail(tapes);
            
        }
        
       else  
       {
-          videoTapes.insertBefore(node);
+          videoTapes.insertAfter(tapes);
       }
    
     }//GEN-LAST:event_addButtonActionPerformed
@@ -324,24 +322,25 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }
         
-        int videoIndex = videoNumber - 1;
+        DoubleNode current = videoTapes.getCurrent();
         
         if (totalNumber == 1)
-        {
-            node = null;
+        {   
+            
+           current = null;
         }
         
         else if (videoNumber == totalNumber)
         {
-            node = videoTapes.getListPrev();
-            node.setNext(null);
+            current = videoTapes.getListPrev();
+            current.setNext(null);
         }
        
         
         else
         {
-            node = videoTapes.getListPrev();
-            node.setNext(node.getNext().getNext());
+            current = videoTapes.getListPrev();
+            current.setNext(current.getNext().getNext());
         }
             
 // TODO add your handling code here:
@@ -354,10 +353,11 @@ public class VideoStoreGUI extends javax.swing.JFrame {
             videoNumberLabel.setText((videoNumber) + "of" + totalNumber);
         }// TODO add your handling code here:
         
-        node = videoTapes.getListPrev();
-        titleField.setText(node.getName());
-        lengthField.setText("" + node.getLength());
-        isOnLoan.setSelected(node.getLent());
+      
+       
+        titleField.setText(videoTapes.getListPrev().getName());
+        lengthField.setText("" + videoTapes.getCurrent().getLength());
+        isOnLoan.setSelected(videoTapes.getCurrent().getLent());
         
     }//GEN-LAST:event_leftButtonActionPerformed
 

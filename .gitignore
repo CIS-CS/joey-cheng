@@ -20,3 +20,8 @@
 *.properties
 *.class
 *.xml
+/hw-netbeans/JC-HW5-swing-intro-b ArrayList/build/
+/hw-netbeans/JC-HW5-swing-intro-b/dist/
+/hw-netbeans/JC-HW5-swing-intro-5a/build/
+/hw-netbeans/JC-HW5-swing-intro-5b/build/
+/hw-netbeans/JC-HW5-swing-intro-5b/dist/

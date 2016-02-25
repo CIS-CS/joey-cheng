@@ -22,8 +22,9 @@ public class DoubleList {
      *  Inserts a node at the head of the list.
      *  @param node The node to insert.
      */
-    public void insertHead(DoubleNode node)
+    public void insertHead(VideoTape tapes)
     {
+        DoubleNode node = new DoubleNode (tapes);
         // Check if the list is empty
         if (head == null)
         {
@@ -48,8 +49,9 @@ public class DoubleList {
      *  Inserts a node at the tail of the list.
      *  @param node The node to insert.
      */
-    public void insertTail(DoubleNode node)
+    public void insertTail(VideoTape tapes)
     {
+        DoubleNode node = new DoubleNode (tapes);
         
         // Check if the list is empty
         if (head == null)
@@ -70,14 +72,20 @@ public class DoubleList {
         size++;
     }
     
+    public DoubleNode getCurrent()
+    {
+        return current;
+    }
+    
   
 
     /**
      *  Inserts a node before the current node.
      *  @param node The node to insert.
      */
-    public void insertBefore(DoubleNode node)
+    public void insertBefore(VideoTape tapes)
     {
+        DoubleNode node = new DoubleNode (tapes);
        
         node.setNext(current);
         node.setPrev(current.getPrev());
@@ -90,12 +98,14 @@ public class DoubleList {
     
     public DoubleNode getListNext()
     {
-        return current.getNext();
+        current = current.getNext();
+        return current ;
     }
     
     public DoubleNode getListPrev()
     {
-        return current.getPrev();
+        current = current.getPrev();
+        return current;
     }
     
 
@@ -103,9 +113,9 @@ public class DoubleList {
      *  Inserts a node after the current node.
      *  @param node The node to insert.
      */
-    public void insertAfter(DoubleNode node)
+    public void insertAfter(VideoTape tapes)
     {
-        
+        DoubleNode node = new DoubleNode (tapes);
         node.setPrev(current);
         node.setNext(current.getNext());
         current.getNext().setPrev(node);
@@ -114,8 +124,9 @@ public class DoubleList {
         size++;
     }
     
-    public DoubleNode getHead(DoubleNode node)
+    public DoubleNode getHead(VideoTape tapes)
     {
+        DoubleNode node = new DoubleNode (tapes);
         while (node.getPrev() != null)
         {
             current = node;
@@ -129,8 +140,9 @@ public class DoubleList {
         return size;
     }
     
-    public DoubleNode getTail(DoubleNode node)
+    public DoubleNode getTail(VideoTape tapes)
     {
+        DoubleNode node = new DoubleNode (tapes);
         while(node.getNext() != null)
         {
             current = node;

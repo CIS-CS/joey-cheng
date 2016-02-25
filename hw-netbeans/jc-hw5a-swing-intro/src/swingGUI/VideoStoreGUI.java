@@ -271,7 +271,7 @@ public class VideoStoreGUI extends javax.swing.JFrame {
         videoNumberLabel.setText(videoNumber + " " + "of" + " " + totalNumber);
         int videoIndex = videoNumber - 1;
         titleField.setText(videoTapes.get(videoIndex).getTitle());
-        lengthField.setText(" " + videoTapes.get(videoIndex).getLength());
+        lengthField.setText("" + videoTapes.get(videoIndex).getLength());
         isOnLoan.setSelected(videoTapes.get(videoIndex).isLent());
         // TODO add your handling code here:
     }//GEN-LAST:event_furthestLeftActionPerformed

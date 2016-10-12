@@ -11,6 +11,13 @@ public class ModeSelection extends Actor
     private boolean isPlaySelected = false;
     private boolean isSimulationSelected = true;
     
+    //constructor for ModeSelection class
+    public ModeSelection()
+    {
+        isPlaySelected = getIsPlaySelected();
+        isSimulationSelected = getIsSimulationSelected();
+    }
+    
     //get and set-methods for instance variables of ModeSelection class
     public void setIsPlaySelected(boolean isPlaySelected)
     {

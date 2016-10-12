@@ -1,0 +1,101 @@
+Binary search trees
+-------------------
+The only way to search a linked list is to do it sequentially.
+This can be very inefficient, especially as the list becomes large.
+A faster way to search is to treat the list as a binary search tree and
+perform a binary search.
+
+--------------------------------------------------------------------------------
+SimpleTree.java
+    Implements a binary search tree using a linked list.
+
+SimpleTreeNode.java
+    Used by SimpleTree.java
+    Each node holds an int, plus pointers to left-child and right-child.
+    To simplify the code, all instance variable are public, and there are no
+    get/set methods.
+
+SimpleTreeApp.java
+    A console app for testing the SimpleTree class.
+
+--------------------------------------------------------------------------------
+BinaryTree.java
+    Implements a binary search tree using a linked list.
+    Same as SimpleTree, except that data in the node is a Contact object
+    instead of an int. Contact objects hold the name and phone number of a
+    contact.
+
+BinaryTreeNode.java
+    Used by BinaryTree.java
+    Each node can hold some data, plus a left and right pointer to possible
+    child nodes.
+    Instance variables are private, accessed by get/set methods.
+
+Contact.java
+    Stores the name and phone number of a contact.
+    The contact object is placed in the BinaryTreeNode.
+
+BinaryTreeApp.java
+    A console app for testing the BinaryTree class.
+
+--------------------------------------------------------------------------------
+
+Deleting a node  (challenge)
+---------------
+These notes are a rewording of the algorithm described at brainmass.com
+See "topic 5.3 > Binary tree > Delete a node" on moodle.
+
+    // in notes below, D = node to be deleted; R = replacement node
+    //
+    // when a matching node is found; what kind of node is it?
+
+    // D is leaf; delete the leaf; set pointer in parent to null
+    
+    // D has one child, on the left
+    // point the parent of D to the child of D
+    // set the left of D to null
+
+    // D has one child, on the right
+    // point the parent of D to the child of D
+    // set the right of D to null
+
+    // D has two children; replace D with:
+    //   - the largest node R from the left subtree of D
+    //     this will be the rightmost node of left subtree
+    //     (note, that node could have a left child)
+    //     or
+    //   - the smallest node R from the right subtree of D
+    //     this will be the leftmost node of the right subtree
+    //     (note, that node could have a right child)
+    //
+    // if R will come from the left subtree of D:
+    // if R is a leaf:
+    //   - create a temp pointer to D
+    //   - set the parent of D to point to R
+    //   - set the parent of R to point to null
+    //   - set the right-pointer of R to point to right subtree of D
+    //   - set the left-pointer of R to point to left subtree of D
+    //   - set the left and right of D to null
+    // if R has a left child (steps are same as above, except for *)
+    //   - create a temp pointer to D
+    //   - set the parent of D to point to R
+    //   - * set the left-pointer of R's parent to point to the left child of R
+    //   - set the right-pointer of R to point to right subtree of D
+    //   - set the left-pointer of R to point to left subtree of D
+    //   - set the left and right of D to null
+    //
+    // if R will come from the right subtree of D:
+    // if R is a leaf:
+    //   - create a temp pointer to D
+    //   - set the parent of D to point to R
+    //   - set the parent of R to point to null
+    //   - set the right-pointer of R to point to right subtree of D
+    //   - set the left-pointer of R to point to left subtree of D
+    //   - set the left and right of D to null
+    // if R has a right child (steps are same as above, except for *)
+    //   - create a temp pointer to D
+    //   - set the parent of D to point to R
+    //   - * set the right-pointer of R's parent to point to the right child of R
+    //   - set the right-pointer of R to point to right subtree of D
+    //   - set the left-pointer of R to point to left subtree of D
+    //   - set the left and right of D to null

@@ -1,0 +1,42 @@
+Dynamic Stack
+-------------
+Stacks can be implemented with a singly-linked list.
+Unlike a stack implemented with an array, a stack implemented with a
+list is dynamic, that is, the size of the stack is virtually unlimited
+(RAM size is the limitation).
+A stack implemented with an array cannot exceed the size of the array.
+
+------------------------------------------------------------
+StackDynApp.java
+    A console application that uses a dynamic stack to store integers.
+    Prompts user to push numbers onto the stack.
+    Then prompts user to pop the stack.
+
+StackDynAppGUI.java
+    A GUI version of StackDynApp.java
+    Not implemented yet. Just the JFrame class is created.
+    You should complete this class. It should use the StackDyn class.
+    See page288_LinkedList > DoubleListAppGUI for help with the UI.
+
+StackDyn.java
+    From p.292 in the red book
+    Implements a stack as a singly-linked list.
+    Each node in the stack points to the previous node, ie, to the node
+    'below' in the stack.
+
+StackDynNode.java
+    A node in the singly-linked list.
+
+-----------------------------------------------------------
+
+ReverseMeApplet.java
+    An applet (as apposed to an application).
+    Runs in the AppletViewer tool. Can run in a browser.
+    Prompts the user for a string.
+    Uses a stack to display the string in reverse order.
+
+ReverseMeStack.java
+    Used by ReverseMeApplet
+
+ReverseMeNode.java
+    Used by CharacterStack

@@ -1,0 +1,45 @@
+Queues operate on a first-in, first-out (FIFO) basis.
+This dynamic queue is implemented using a singly-linked list.
+Nodes are added at the tail (enqueued) and removed from the head (dequeued), 
+just like in a supermarket queue.
+Each node holds information about a customer.
+
+------------------------
+
+CustomerQueueAppGUI.java
+
+    A Swing application that uses a CustomerQueue to manage customers at a
+    service counter.
+    Note that the application will close when the user clicks on File > Exit,
+    and also when the user clicks on the X button in the upper right of the
+    application window. 
+    Your application should respond to both so that it always shuts down
+    gracefully.
+    Note, the ActionListeners are not implemented, ie, button clicks do not
+    do anything.
+
+CustomerQueue.java
+
+    Implements a queue using a singly-linked list.
+ 
+CustomerNode.java
+  
+    Used by CustomerQueue.java
+
+QueueEmptyException.java
+
+    Used by CustomerQueue.java
+
+QueueFullException.java
+
+    Used by CustomerQueue.java
+
+------------------------
+
+SingtelQueueApplet.java
+
+    This class was replaced by CustomerQueueApp.java
+    This is an (ugly) applet that manages a queue of customers.
+    This is an applet where the Swing interface is writing by hand, rather
+    than with the form editor in Netbeans.
+    

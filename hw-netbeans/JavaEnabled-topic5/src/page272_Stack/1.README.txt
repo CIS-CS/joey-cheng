@@ -1,0 +1,33 @@
+Static Stack
+A stack can be implemented using an Array or a List.
+The classes in this package use an array to implement a stack.
+Arrays cannot change size at runtime, so we say the stack is static (in size).
+Lists can change size at runtime, so we say the link-based stack is dynamic.
+
+------------------------------------------------------
+StackApp.java
+    Used to test the Stack class.
+    Creates a Stack object and calls push(), pop(), and then displays the stack.
+
+Stack.java
+    Implements a stack in an array, thus, it is a static stack, ie, the
+    stack size cannot grow beyond the size of the array.
+    The stack pointer (SP) points to the top element in the stack.
+    If the stack is empty, SP equals -1.
+
+    Please see the Mastery section of the Subject Guide
+
+------------------------------------------------------
+RPNCalculatorApp.java
+
+    Not implemented.
+    Should be able to evaluate an RPN expression.
+    A stack works well for evaluating an expression that is expressed in RPN.
+    For example, the expression ab+ (where a and b are numbers) could be
+    pushed onto the stack, and then evaluated by pushing and popping as 
+    necessary.
+
+RPNCalculatorStack.java
+
+    Not implemented.
+    should implement a stack, to be used by RPNCalculatorApp.

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>HashMH.java</title>
+</head>
+
+<body>
+<pre>
+package page267_Hashing;
+import ibio.IBIO;
+
+/**
+ * JRRHasher.java
+ * This class inserts words from JRR Tolkien's Telerin language into a
+ * hash table. The hash table could later be used as a lookup table by
+ * a Telerin spell checker to quickly find valid Telerin words.
+ */
+public class JRRHasher {
+
+    private String[] keys = {"trumbe", "vanua", "vane", "auta", "ulga"};
+    private String[] hashTable = new String[51];
+    private int      hashValue;
+
+    public static void main(String[] args) {
+
+        JRRHasher jHash = new JRRHasher();
+
+        jHash.clearHashTable();      // Initialize the hash table
+        jHash.buildHashTable();      // Insert the keys into the hash table
+        jHash.displayHashTable();    // Show the contents of the hash table
+    }
+
+    // Set all entries in the hash table to blank
+    public void clearHashTable() {
+
+        for (int i = 0; i < hashTable.length; i++) {
+            hashTable[i] = "";
+        }
+    }
+
+    // Insert each key into the hash table
+    public void buildHashTable() {
+
+        // Add each key to the hash table
+        for (int i = 0; i < keys.length; i++) {
+            hashValue = hashFunction(keys[i]);
+            hashTable[hashValue] = keys[i];
+        }
+    }
+
+    // Calculate the hash value for a key
+    public int hashFunction(String key) {
+
+        int asciiSum = 0;
+        int hashValue = 0;
+
+        for (int i = 0; i < key.length(); i++) {
+            asciiSum = asciiSum + key.charAt(i);
+        }
+        hashValue = asciiSum % hashTable.length;
+        return hashValue;
+    }
+
+    // Display the contents of the hash table
+    public void displayHashTable() {
+
+        IBIO.output("\nIndex\tContents");
+        IBIO.output("-----\t--------");
+        for (int i = 0; i < hashTable.length; i++) {
+            IBIO.output(i + "\t" + hashTable[i]);
+        }
+    }
+}
+</pre>
+</body>
+</html>

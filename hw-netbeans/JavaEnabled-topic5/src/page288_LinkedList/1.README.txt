@@ -1,0 +1,54 @@
+SingleListApp.java
+    A console application that uses SingleList to hold a list of int's.
+
+SingleList.java
+    From p.288 in the red book.
+    Implements the add() method on a singly-linked list.
+    (The Class in the book is named Llist)
+
+SingleNode.java
+    Used by SingleList.java
+
+Exercise:
+implement the remove() method in SingleList.java
+
+-------------------
+
+FileListApplet.java
+    An applet that uses a singly-linked list to hold FileNode objects.
+    Each node holds a key and an offset into a file.
+    The nodes are in sequence, by key.
+    The application is not well designed in that the list operations are woven
+    into the application. The list stuff should be in a separate class.
+
+FileNode.java
+    Used by FileListApplet
+    Each node holds a key and an offset into a file.
+
+-------------------
+
+DoubleListAppGUI.java
+    User enters names; names are stored in a doubly-linked list.
+    The list is displayed as user adds/removes names.
+    A Swing application that uses the DoubleList class to hold the names
+    that the user enters.
+
+DoubleList.java
+    Implements a doubly-linked list.
+    Head points to first node, tail points to last node, current points to
+    most recently inserted (MRI) node.
+
+DoubleNode.java
+    Used by DoubleList.java
+    Contains the data, plus previous and next 'pointers'.
+
+-------------------
+
+DoubleListApplet.java
+    An applet;  prompts user to insert items into the list.
+    Uses the DoubleList class.
+    Supports insertion at the head and tail only.
+    It is included here just for kicks.
+    You do not need to know how to write applets.
+
+

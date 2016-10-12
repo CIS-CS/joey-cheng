@@ -1,0 +1,15 @@
+-----
+Recursion is an elegant alternative to iteration. It often requires
+less code. Note that recursion is a technique; it is not a language
+construct.
+
+-----
+Factorial.java
+Contains a recursive method that calculates the factorial of a number.
+
+Factorials.java
+Uses iteration (for loop) instead of recursion.
+
+
+Fibonacci.java
+incomplete

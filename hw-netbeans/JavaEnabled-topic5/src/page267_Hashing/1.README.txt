@@ -1,0 +1,35 @@
+Hashing involves:
+    hash key -> hash function -> hash value -> index to hash table
+    A hash key (eg, a student ID + name) is passed to a hash function.
+    The hash function hashes (grinds up) the key to produce a hash value.
+    The hash value is used as in index into a hash table.
+    Information associated with the key is stored in the hash table.
+
+    int hashValue = hashFunction(String hashKey);
+    hashTable[hashValue][o] = the key
+    hashTable[hashValue][1] = the data associated with the key
+
+HashTable.java
+    Has the skeleton of a hash table in an array (static hash table).
+    Needs to be fleshed out.
+
+HashTableApp.java
+    Not implemented yet.
+    
+JRRHasherApp.java
+    This class inserts words from JRR Tolkien's Telerin language into a
+    hash table. The hash table could be used as a lookup table by
+    a Telerin spell checker to quickly find valid Telerin words.
+    This version does not check for collisions.
+
+JRRHasher.html
+    If you want to display source code in an HTML page, it is nice to be
+    able to maintain the formatting of the source.
+    Use the <pre> and </pre> tags to retain the source formattting.
+    Create an empty HTML file:
+        R-click the project, New, HTML file
+    In the <body>, add the <pre> and </pre> tags.
+    Paste the source code between the <pre> tags.
+    View the HTML file in a browser.
+
+

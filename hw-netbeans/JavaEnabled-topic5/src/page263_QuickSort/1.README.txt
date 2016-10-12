@@ -1,0 +1,20 @@
+QuickSort.java
+--------------
+
+Implements the quick sort algorithm.
+See topic 5.2 on moodle for more information.
+Efficiency is O(nlogn), on average.
+Worst case space complexity = n.
+The algorithm is recursive. Sorts the left side, then the right side, recursively.
+
+Exercise:
+1. Run the algorithm with different data.
+   Vary the range of the data set.
+   Data from a smaller set will have more duplicates than data from a larger
+   set. Does data with more duplicates sort faster?
+   Run it with sorted data and worst case data.
+
+2. Run the application with different data set size.
+   Do you see any patterns?
+
+

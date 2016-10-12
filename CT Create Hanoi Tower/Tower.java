@@ -23,13 +23,12 @@ public class Tower extends Actor
     }
     
     //Get and set-methods for all instance variables of Tower class
-    
     public void setColor (String color)
     {
         color = this.color;
     }
     
-    public String getColor (String color)
+    public String getColor ()
     {
         return color;
     }
@@ -48,6 +47,28 @@ public class Tower extends Actor
     {
         HEIGHT = this.HEIGHT;
     }
+    
+    public double getHEIGHT ()
+    {
+        return HEIGHT;
+    }
+    
+    public void setIsSelected (boolean isSelected)
+    {
+        isSelected = this.isSelected;
+    }
+    
+    public boolean getIsSelected()
+    {
+        return isSelected;
+    }
+    
+    //method for highlighting Tower when cursor hovers over it.
+    public void highlightTower()
+    {
+    }
+    
+    
     
     
            

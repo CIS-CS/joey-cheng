@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Color;
+import java.awt.MouseInfo;
 /**
  * Write a description of class ModeSelection here.
  * 
@@ -10,12 +11,15 @@ public class ModeSelection extends Actor
 {
     private boolean isPlaySelected = false;
     private boolean isSimulationSelected = true;
+    private GreenfootImage image = new GreenfootImage ("Play", 20, Color.BLACK , Color.WHITE);
     
     //constructor for ModeSelection class
     public ModeSelection()
     {
         isPlaySelected = getIsPlaySelected();
         isSimulationSelected = getIsSimulationSelected();
+        image = new GreenfootImage ("Simulation", 20, Color.BLACK, Color.WHITE);
+        image.drawImage (image, 100, 100);
     }
     
     //get and set-methods for instance variables of ModeSelection class
@@ -45,6 +49,19 @@ public class ModeSelection extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        image.drawImage (image, 100, 100);
+        if (Greenfoot.mouseClicked(image) && isSimulationSelected == true)
+        {
+            image = new GreenfootImage ("Simulation", 20, Color.BLACK, Color.WHITE);
+            setIsSimulationSelected(false);
+            setIsPlaySelected(true);
+        }
+        
+        if (Greenfoot.mouseClicked(image) && isPlaySelected == true)
+        {
+            image = new GreenfootImage ("Play", 20, Color.BLACK, Color.WHITE);
+            setIsSimulationSelected(true);
+            setIsPlaySelected(false);
+        }    
+    }
 }

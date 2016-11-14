@@ -31,7 +31,6 @@ public class Help extends Actor
     public void printHelp()
     {
     
-    
     }
    
         
@@ -41,6 +40,9 @@ public class Help extends Actor
      */
     public void act() 
     {
+        
+        if (Greenfoot.isKeyDown("h") == true)
+        System.out.println("hi");
         // Add your action code here.
     }    
 }

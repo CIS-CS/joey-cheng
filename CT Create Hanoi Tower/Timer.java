@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.awt.Color;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Timer here.
@@ -11,21 +12,36 @@ public class Timer extends Actor
     private int hours = 0;
     private int minutes = 0;
     private int seconds = 0;
+    private GreenfootImage world;
     
     /** 
      * Constructor for Timer class
      */
-    public Timer()
-    {
-        hours = getHours();
-        minutes = getMinutes();
-        seconds = getSeconds();
-    }
-    
-    /**
+ static Thread thread = new Thread();
+ public void act() 
+ {
+
+ }
+ 
+ public void start()  
+ {
+     GreenfootImage world = new GreenfootImage(200,200);
+     for (int c = 0; c <= 1000000000; c++)
+     {
+         if (c % 60 == 0)
+         {
+             seconds++;
+             world.setColor(new Color (140, 30, 20));
+             world.drawString("" +c, 100, 100);
+         }
+     }
+     
+
+ }
+   /* /**
      * Get and set-methods for instance variables in Timer class
      */
-    public void setHours (int hours)
+   /* public void setHours (int hours)
     {
         hours = this.hours;
     }
@@ -59,23 +75,12 @@ public class Timer extends Actor
     /**
      * Returns time elapsed since timer was started
      */
-  /*  public long returnTimeDifference()
-    {
-        int gameTimer = 0;
-        gameTimer = (gameTimer + 1) % 60;
-        if (gameTimer == 0) 
-        {
-            game
-        
-       
-        
-        
-    }
+  
     
     /**
      * Starts timer
      */
-    public void start()
+    /*public void start()
     {
     }
     
@@ -83,13 +88,17 @@ public class Timer extends Actor
     /**
      * Pauses timer
      */
-    public void stop()
+  /*  public void stop()
     {
     }
     
     public void act() 
     {
+        for 
+        world.drawString(""+ 
         //returnTimeDifference();
      // GreenfootImage.drawString ();// Add your action code here.
     }    
+    */ 
 }
+

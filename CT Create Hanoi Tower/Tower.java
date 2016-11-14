@@ -9,16 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Tower extends Actor
 {
     private String color;  
-    private double WIDTH = 3.0;
-    private double HEIGHT = 33.0;
+    private static final double WIDTH = 3.0; // initialize in constructor, static so that you can
+    private static final double HEIGHT = 33.0; // call Tower.WIDTH; 
     private boolean isSelected = false;
     
     //constructor for Tower class
     public Tower()
     {
         color = getColor();
-        WIDTH = getWIDTH();
-        HEIGHT = getHEIGHT();
         isSelected = getIsSelected();
     }
     

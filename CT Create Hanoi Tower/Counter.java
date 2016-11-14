@@ -8,7 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Counter extends Actor
 {
-    private int movesPerformed = 0;
+    private String text;
+    private int count; //count shown on counter
+    
+    public Counter (String caption)
+    {
+        text = caption;
+        updateImage();
+    }
+    
+    public void updateImage()
+    {
+      //  setImage (new GreenfootImage (text + caption, 25, java
+    /*private int movesPerformed = 0;
     
     public Counter()
     {
@@ -44,8 +56,8 @@ public class Counter extends Actor
      * Act - do whatever the Counter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    //public void act() 
+   }   
         // Add your action code here.
-    }    
+      
 }

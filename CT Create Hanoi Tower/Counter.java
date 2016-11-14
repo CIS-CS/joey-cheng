@@ -16,9 +16,29 @@ public class Counter extends Actor
         text = caption;
         updateImage();
     }
-    
+    /**
+     * creates or updates moves displayed by counter
+     */
     public void updateImage()
     {
+       setImage (new GreenfootImage (text+count, 24, java.awt.Color.black, null));
+    }
+    
+    public int increment()
+    {
+        count++;
+        updateImage();
+        return count;
+    }
+    /**
+     * returns value of moves
+     */
+    public int getCount()
+    {
+        return count;
+    }
+    
+       
       //  setImage (new GreenfootImage (text + caption, 25, java
     /*private int movesPerformed = 0;
     
@@ -60,4 +80,4 @@ public class Counter extends Actor
    }   
         // Add your action code here.
       
-}
+

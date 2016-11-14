@@ -1,7 +1,14 @@
 #BlueJ class context
 comment0.target=Counter
 comment0.text=\n\ Write\ a\ description\ of\ class\ Counter\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=private\ int\ movesPerformed\ \=\ 0;\n\ \ \ \ \n\ \ \ \ public\ Counter()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ movesPerformed\ \=\ getMovesPerformed();\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ //get\ and\ set-methods\ for\ instance\ variables\ of\ Counter\ class\n\ \ \ \ public\ void\ setMovesPerformed\ (int\ movesPerformed)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ movesPerformed\ \=\ this.movesPerformed;\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ public\ int\ getMovesPerformed()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ return\ movesPerformed;\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ //increments\ counter\ value\ by\ one\n\ \ \ \ public\ int\ countUp()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ movesPerformed++;\n\ \ \ \ \ \ \ \ return\ movesPerformed;\n\ \ \ \ }\n\ \ \ \ \n\ \ \ \ //decreases\ counter\ value\ by\ one\ \n\ \ \ \ public\ int\ countDown()\n\ \ \ \ {\n\ \ \ \ \ \ \ \ movesPerformed--;\n\ \ \ \ \ \ \ \ return\ movesPerformed;\n\ \ \ \ }\n\ \ \ \ \ \ \ \ \ \ \ \n\ \ \ \ /**\n\ Act\ -\ do\ whatever\ the\ Counter\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=2
+comment1.params=caption
+comment1.target=Counter(java.lang.String)
+comment2.params=
+comment2.target=void\ updateImage()
+comment2.text=\n\ creates\ or\ updates\ moves\ displayed\ by\ counter\n
+comment3.params=
+comment3.target=int\ increment()
+comment4.params=
+comment4.target=int\ getCount()
+comment4.text=\n\ returns\ value\ of\ moves\n
+numComments=5

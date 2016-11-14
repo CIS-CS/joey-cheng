@@ -45,7 +45,7 @@ public class TowerOfHanoi extends World
         //draws the towers   
         background.setColor(new Color(200, 100, 100));
         background.fillRect(150, 600, 800, 30);
-        background.setColor(new Color(100, 50, 50));
+        background.setColor(new Color(150, 80, 80));
         background.fillRect(250, 110, 45, 500);
         background.fillRect(525, 110, 45, 500);
         background.fillRect(800, 110, 45, 500);
@@ -105,7 +105,7 @@ public class TowerOfHanoi extends World
         addObject (mode, 550, 80);
         // adding the counter displaying moves
         counter = new Counter ("Moves used: ");
-        addObject (counter, 80, 25);
+        addObject (counter, 1000, 50);
         // shows instructions
         displayHelp();
     }
@@ -113,13 +113,13 @@ public class TowerOfHanoi extends World
     /**
      * adds a disc to the tower in the array that tracks arrangement of discs
      */
-    private void addDisc (int towerNumber, Disc disc)
+    public void addDisc (int towerNumber, Disc disc)
     {
         discOrder [towerNumber][numberOfDiscs[towerNumber]] = disc;
         numberOfDiscs[towerNumber]++;
     }
     
-    private Disc removeDisc (int towerNumber)
+    public Disc removeDisc (int towerNumber)
     {
         Disc disc = discOrder[towerNumber][numberOfDiscs[towerNumber]-1];
         numberOfDiscs[towerNumber]--;
@@ -132,17 +132,75 @@ public class TowerOfHanoi extends World
   
     public void act()
     {
+        //sets number of discs
         String key = Greenfoot.getKey();
         if (key != null && "34567890".indexOf(key) >= 0)
         {
             discCount = "34567890".indexOf(key)+3;
             Greenfoot.setWorld(new TowerOfHanoi());
         }
+        
         if (simulation && "space".equals(key))
         {
+            runSimulation();
         }
-       // if (simulation && space
+        //determines from and to where the user wishes to move the disc
+       // if (!mode && !
+        
+
     }
+    
+    public void runSimulation() //executeMove method
+    {
+        //checks if move from tower to tower has already been completed
+        if (counter.getCount() == (int)Math.pow(2, discCount)-1)
+        {
+            return; // simulation complete
+        }
+        int moves = counter.increment();
+        //determine the original tower that discs are mvoed from
+        int discNumber = discCount-1;
+        while (moves % (int)Math.pow(2, discNumber) != 0)
+        {
+            discNumber--;
+        }
+        // determines location of Disc
+        int from = (sizeOrder[discNumber].getX()-275)/275;
+        //removes Disc from original tower
+        Disc disc = removeDisc(from);
+        //determines tower to move to
+        int to = (from + 4 - 2*(disc.getIndex()%2))%3; //need to determine logic of this
+        //moves discs
+        moveDisc(disc, from, to); 
+        addDisc (to, disc);
+        
+        
+    }
+    
+    public void moveDisc (Disc disc, int from, int to)
+    {
+        //takes disc off tower
+        while (disc.getY() != 30) //why 30?
+        {
+            disc.setLocation(disc.getX(), disc.getY()-10); //why 10
+        }
+        //determines whether disc should be moved left or right
+        int direction = (int)Math.signum(to-from);
+        while (disc.getX() != 275 + 275*to)
+        {
+            disc.setLocation (disc.getX() + direction*1, disc.getY());
+        }
+        //adds disc to new tower
+        int newY = 590-25*(numberOfDiscs[to]);
+        while (disc.getY() != newY)
+        {
+            disc.setLocation (disc.getX(), disc.getY()+10); // why 10!
+        }
+    }
+    
+   // public void 
+    
+//    public void 
         /**
          * interacts with ModeSelection class
          */

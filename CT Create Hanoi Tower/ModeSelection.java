@@ -7,22 +7,66 @@ import java.awt.MouseInfo;
  */
 public class ModeSelection extends Actor
 {
+    private String text;
+    private boolean isSimulation;
     public ModeSelection()
     {
         //toggle between texts depending on mode selected by user
-        String text = TowerOfHanoi.simulation ? "Simulation" : "Play";
+        text = "Simulation";
+        isSimulation = true;
+        //textSimulation = "Play";
         GreenfootImage textImage = new GreenfootImage(text, 20, Color.black, null);
         //draws default image of the button
         GreenfootImage image = new GreenfootImage (90, 20);
-        image.setColor(Color.red);
+        image.setColor(Color.gray);
         image.fill();
         image.setColor(Color.black);
         image.drawRect(0, 0, 100, 20);
-        image.setColor(Color.blue);
+        image.setColor(Color.gray);
         image.drawRect(2, 2, 90, 20);
         //draws default text
-        image.drawImage(textImage, 50-textImage.getWidth()/2, 100-textImage.getHeight()/2);
+        image.drawImage(textImage, 45-textImage.getWidth()/2, 10-textImage.getHeight()/2);
         setImage(image);
+    }
+    
+    public ModeSelection(String text, boolean isSimulation)
+    {
+         //toggle between texts depending on mode selected by user
+        isSimulation = this.isSimulation;
+        text = this.text;
+        //textSimulation = "Play";
+        GreenfootImage textImage = new GreenfootImage(text, 20, Color.black, null);
+        //draws default image of the button
+        GreenfootImage image = new GreenfootImage (90, 20);
+        image.setColor(Color.gray);
+        image.fill();
+        image.setColor(Color.black);
+        image.drawRect(0, 0, 100, 20);
+        image.setColor(Color.gray);
+        image.drawRect(2, 2, 90, 20);
+        //draws default text
+        image.drawImage(textImage, 45-textImage.getWidth()/2, 10-textImage.getHeight()/2);
+        setImage(image);
+    }
+    
+    public void setText(String text)
+    {
+        text = this.text;
+    }
+    
+    public String getText()
+    {
+        return text;
+    }
+    
+    public void setIsSimulation(boolean isSimulation)
+    {
+        isSimulation = this.isSimulation;
+    }
+    
+    public boolean getIsSimulation()
+    {
+        return isSimulation;
     }
     
     /**
@@ -32,7 +76,15 @@ public class ModeSelection extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            TowerOfHanoi.simulation = !TowerOfHanoi.simulation;
+            if (isSimulation == true)
+            {
+                isSimulation = false;
+            }
+            
+            else if (isSimulation == false)
+            {
+                isSimulation = true;
+            }
             Greenfoot.setWorld(new TowerOfHanoi());
         }
     }

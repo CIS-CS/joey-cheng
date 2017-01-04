@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Disc
+comment1.params=number
+comment1.target=Disc(int)
+comment2.params=
+comment2.target=int\ getIndex()
+comment2.text=\n\ returns\ the\ index\ of\ the\ Disc\ (zero\ is\ smallest,\ increasing\ to\ largest)\n
+numComments=3

@@ -9,31 +9,32 @@ import java.awt.Color;  // (World, Actor, GreenfootImage, Greenfoot and MouseInf
  */
 public class TowerOfHanoi extends World
 {
-    public static int discCount = 10; //number of discs in the game
-   // public static boolean simulation; //mode set for this world
-    private Disc[] sizeOrder; //lists discs by size
-    private Disc[][] discOrder; // tracks arrangement of discs
-    private int[] numberOfDiscs; // tracks number of discs on tower
-    Counter counter; //track and show move count
-    ModeSelection mode; //button to toggle between 'play' and 'simulation
-    Timer timer; //creates timer
-     
+    public static int     discCount = 10;                    // number of discs in the game
+    public static boolean simulation = true;                // mode set for this world
+    private Disc[]        sizeOrder;                       // lists discs by size
+    private Disc[][]      discOrder;                      // tracks arrangement of discs
+    private int[]         numberOfDiscs = new int [3];   // tracks number of discs on each tower
+    private Counter       counter;                      // track and show move count
+    private ModeSelection mode;                        // button to toggle between 'play' and 'simulation
+    private Timer         timer;                      // creates timer
+    private PopUpMessage  message;                   // creates pop up message that displays instructions
     /**
-     * Constructor for objects of class MyWorld.
-     * 
+     * Constructor for objects of class TowerOfHanoi.
+     * initializes insatnce varaibles
      */
     public TowerOfHanoi()
     {     
         super(1100, 700, 1); 
         setBackground();
-        discCount = getDiscCount();
-       // simulation = true;
+        discCount = getDiscCount(); 
+        //simulation = true;
         sizeOrder = new Disc[discCount];
         discOrder = new Disc[3][discCount];
-        numberOfDiscs = new int [3];
+        //numberOfDiscs = new int [3];
         mode = new ModeSelection();
         timer = new Timer();
         populateWorld();
+        message = new PopUpMessage("In simulation mode, press space bar to display next move. \n This is a test" );
       
     }
     
@@ -51,11 +52,11 @@ public class TowerOfHanoi extends World
         background.fillRect(525, 110, 45, 500);
         background.fillRect(800, 110, 45, 500);
         //draws the text of the buttons
-        GreenfootImage text = new GreenfootImage ("Use number buttons '3' to '0' to adjust disc count. Press '0' if you want ten discs", 24, Color.red, null);
-        background.drawImage (text, 150, 10);
-        text = new GreenfootImage ("Click button to toggle between simulation and play modes", 24, Color.black, null);
-        background.drawImage (text, 270, 40);
-        text = new GreenfootImage ("Amount of discs: " + discCount, 24, Color.black, null);
+        //GreenfootImage text = new GreenfootImage ("Use number buttons '3' to '0' to adjust disc count. Press '0' if you want ten discs", 24, Color.red, null);
+        //background.drawImage (text, 150, 10);
+        //text = new GreenfootImage ("Click button to toggle between simulation and play modes", 24, Color.black, null);
+        //background.drawImage (text, 270, 40);
+        GreenfootImage text = new GreenfootImage ("Amount of discs: " + discCount, 24, Color.black, null);
         background.drawImage (text, 10, 40);
         
         //draws the discs
@@ -76,12 +77,12 @@ public class TowerOfHanoi extends World
         background.setColor(Color.white);
         
         GreenfootImage text = null;
-        if (mode.getIsSimulation() == true)
+        if (simulation == true)
         {
         
             text = new GreenfootImage ("Press 'space' to display next move", 24, Color.black, null);
         }
-        else
+        else 
         {
             text = new GreenfootImage ("Click on towers that you wish to move from and to", 24, Color.black, null);
         }

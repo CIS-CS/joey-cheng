@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=PopUpMessage
+comment0.text=\n\ Displays\ a\ message\ on\ the\ screen.\n\ Position\ the\ message\ when\ the\ PopUpMessage\ object\ is\ added\ to\ the\ world.\n\ \n\ @author\ Mark\ Hayes\n\ @version\ 1.1\n
+comment1.params=message
+comment1.target=PopUpMessage(java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

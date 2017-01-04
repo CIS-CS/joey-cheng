@@ -8,12 +8,12 @@ import java.awt.MouseInfo;
 public class ModeSelection extends Actor
 {
     private String text;
-    private boolean isSimulation;
+    private boolean isSimulation = true;
     public ModeSelection()
     {
         //toggle between texts depending on mode selected by user
-        text = "Simulation";
-        isSimulation = true;
+        text = TowerOfHanoi.simulation ? "Simulation" : "Play mode";
+        //isSimulation = true;
         //textSimulation = "Play";
         GreenfootImage textImage = new GreenfootImage(text, 20, Color.black, null);
         //draws default image of the button
@@ -76,15 +76,7 @@ public class ModeSelection extends Actor
     {
         if (Greenfoot.mouseClicked(this))
         {
-            if (isSimulation == true)
-            {
-                isSimulation = false;
-            }
-            
-            else if (isSimulation == false)
-            {
-                isSimulation = true;
-            }
+            TowerOfHanoi.simulation = !TowerOfHanoi.simulation;
             Greenfoot.setWorld(new TowerOfHanoi());
         }
     }

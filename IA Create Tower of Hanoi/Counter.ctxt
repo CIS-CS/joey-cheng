@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Counter
+comment1.params=text
+comment1.target=Counter(java.lang.String)
+comment2.params=
+comment2.target=int\ getMoveCount()
+comment2.text=\n\ returns\ current\ move\ count\n
+comment3.params=
+comment3.target=int\ increment()
+comment3.text=\n\ increments\ and\ returns\ updated\ move\ count\n
+comment4.params=
+comment4.target=void\ updateImage()
+comment4.text=\n\ updates\ image\ of\ the\ counter\n
+numComments=5

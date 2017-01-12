@@ -12,7 +12,10 @@ public class TowerOfHanoi extends World
 
     Counter counter;                                        // move counter
     ModeButton button = new ModeButton();                   // button to toggle between play and simulation mode
-    
+    PopUpMessage message = new PopUpMessage("Click on yellow button to change game modes \n Move all discs from one tower to another \n A bigger disc cannot be placed on a smaller one \n Use buttons '3' to '9' to change number of discs. Press '0' for ten discs");              // pop-up message displaying user instructions
+    PopUpMessage gameComplete = new PopUpMessage("Move complete! Press 'r' to restart.");
+    PopUpMessage warning = new PopUpMessage("Illegal move!");
+    PopUpMessage cannotMove = new PopUpMessage("Disc cannot be moved!");
     public TowerOfHanoi() 
     {
         super(800, 480, 1);
@@ -47,13 +50,13 @@ public class TowerOfHanoi extends World
         GreenfootImage text = null;
         if (simulation) 
         {
-            text = new GreenfootImage("Press 'space' to simulate next move", 24, Color.black, null);
+            text = new GreenfootImage("Press 'space' to simulate next move\nHold 'h' for help", 24, Color.red, null);
         }
         else
         {
-            text = new GreenfootImage("Click on towers to select from and to", 24, Color.black, null);
+            text = new GreenfootImage("Click on towers to select from and to\nHold 'h' for help", 24, Color.red, null);
         }
-        bg.drawImage(text, 220, 20);
+        bg.drawImage(text, 220, 10);
     }
     
     /**
@@ -142,12 +145,6 @@ public class TowerOfHanoi extends World
      */
     private void makeMove() 
     {
-        // check if simulation is finished
-        if (counter.getMoveCount() == (int)Math.pow(2, discCount)-1) 
-        {
-            // puzzle completed
-            Greenfoot.setWorld(new TowerOfHanoi());
-        }
         // increments move count
         int moves = counter.increment(); 
         // determine 'from' tower
@@ -158,13 +155,13 @@ public class TowerOfHanoi extends World
         }
         int from = (sizeOrder[index].getX()-200)/200;
         // remove disc from 'from' tower
-        Disc disc = removeDisc(from);
+        Disc ring = removeDisc(from);
         // determine 'to' tower
-        int to = (from+4-2*(disc.getIndex()%2))%3;
+        int to = (from+4-2*(ring.getIndex()%2))%3;
         // move disc from 'from' tower to 'to' tower
-        moveDisc(disc, from, to);
+        moveDisc(ring, from, to);
         // add disc to 'to' tower 
-        addDisc(to, disc);
+        addDisc(to, ring);
     }
     
      /**
@@ -182,9 +179,9 @@ public class TowerOfHanoi extends World
     private void executeMove(int from, int to)
     {
         counter.increment();
-        Disc disc = removeDisc(from);
-        moveDisc(disc, from, to);
-        addDisc(to, disc);
+        Disc ring = removeDisc(from);
+        moveDisc(ring, from, to);
+        addDisc(to, ring);
     }
     
     /**
@@ -199,10 +196,16 @@ public class TowerOfHanoi extends World
         {
             executeMove(from, to);
         }
+        else
+        {
+            addObject(warning, 400, 240);
+            Greenfoot.delay(800);
+            removeObject(warning);
+        }
         removeObjects(getObjects(Arrow.class));
         if (gameCompleted()) 
         {
-            Greenfoot.setWorld(new TowerOfHanoi());
+            addObject(gameComplete, 400, 240);
         }
     }
     
@@ -215,10 +218,15 @@ public class TowerOfHanoi extends World
         if (numberOfDiscs[from] == 0) return;
         // check if disc on 'from' tower can move anywhere
         if (validateMove(from, (from+1)%3) || validateMove(from, (from+2)%3)) 
-            {
-                addObject(new Arrow(), 200+200*from, 400);
-    
-            }
+        {
+            addObject(new Arrow(), 200+200*from, 400);
+        }
+        else
+        {
+            addObject(cannotMove, 240, 200);
+            Greenfoot.delay(800);
+            removeObject(cannotMove);
+        }
     }
     
     /**
@@ -233,10 +241,17 @@ public class TowerOfHanoi extends World
             discCount = "34567890".indexOf(key)+3;
             Greenfoot.setWorld(new TowerOfHanoi());
         }
-        // automatically moves disc if space button is pressed and user is in simulation mode
+        // automatically moves disc if simulation is not complete, and if space button is pressed and user is in simulation mode
         if (simulation && "space".equals(key)) 
         {
-            makeMove();
+            if (gameCompleted()) 
+            {
+                addObject(gameComplete, 400, 240);
+            }
+            else
+            {
+                makeMove();
+            }
         }
         // determines if user has clicked on the towers, and moves discs accordingly
         if (!simulation && !gameCompleted() && Greenfoot.mouseClicked(null) && !Greenfoot.mouseClicked(button))
@@ -259,5 +274,19 @@ public class TowerOfHanoi extends World
                 }
             }
         }
+        // determines if the 'h' buttons is held and displays user instructions
+        if (Greenfoot.isKeyDown("h"))
+        {
+            addObject (message, 400, 240);
+        }
+        else
+        {
+            removeObject(message);
+        }
+        // in play mode, determines if game is completed and wheter user wishes to play once more
+        if (gameCompleted() && "r".equals(key))
+        {
+            Greenfoot.setWorld(new TowerOfHanoi());
+        }  
     }  
 }
